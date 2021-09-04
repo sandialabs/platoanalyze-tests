@@ -14,7 +14,7 @@
       <Parameter name="A-Form" type="bool" value="true"/>
       <Parameter name="Time Step" type="double" value="5.0e-7"/>
       <Parameter name="Newmark Gamma" type="double" value="0.5"/>
-      <Parameter name="Newmark Beta" type="double" value="0.0"/>
+      <Parameter name="Newmark Beta" type="double" value="0.25"/>
     </ParameterList>
 
     <ParameterList name="Hyperbolic">
