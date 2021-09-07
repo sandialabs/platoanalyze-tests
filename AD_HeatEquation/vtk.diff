@@ -5,7 +5,8 @@ TIME STEPS relative 1.e-6 floor 0.0     # min:               0 @ t1 max:        
 # No GLOBAL VARIABLES
 
 NODAL VARIABLES
-	Temperature relative 1.0e-10 floor 1e-10
+	temperature relative 1.0e-7 floor 1e-9
+	temperature_dot relative 1.0e-7 floor 1e-9
 
 # No ELEMENT VARIABLES
 

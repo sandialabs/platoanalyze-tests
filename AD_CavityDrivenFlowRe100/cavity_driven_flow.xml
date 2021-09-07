@@ -1,0 +1,76 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="2"/>
+
+  <Parameter name="Input Mesh" type="string" value="cavity_driven_flow.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Incompressible Fluids"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Hyperbolic"/>
+
+    <ParameterList name='Hyperbolic'>
+      <Parameter name='Heat Transfer' type='string' value='None'/>
+    </ParameterList>
+
+    <ParameterList name='Spatial Model'>
+      <ParameterList name='Domains'>
+        <ParameterList name='Design Volume'>
+          <Parameter name='Element Block' type='string' value='block_1'/>
+          <Parameter name='Material Model' type='string' value='water'/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name='Material Models'>
+      <ParameterList name='water'>
+        <Parameter  name='Reynolds Number'  type='double'  value='1e2'/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name='Time Integration'>
+      <Parameter name='Safety Factor'      type='double' value='0.7'/>
+    </ParameterList>
+
+    <ParameterList  name='Linear Solver'>
+      <Parameter name='Solver Stack' type='string' value='AmgX'/>
+    </ParameterList>
+
+    <ParameterList  name='Convergence'>
+      <Parameter name='Steady State Tolerance' type='double' value='1e-3'/>
+    </ParameterList>
+
+    <ParameterList  name='Velocity Essential Boundary Conditions'>
+      <ParameterList  name='X-Dir No-Slip'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='no_slip'/>
+      </ParameterList>
+      <ParameterList  name='Y-Dir No-Slip'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='1'/>
+        <Parameter  name='Sides'    type='string' value='no_slip'/>
+      </ParameterList>
+      <ParameterList  name='X-Dir Inlet'>
+        <Parameter  name='Type'     type='string' value='Fixed Value'/>
+        <Parameter  name='Value'    type='double' value='1.0'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='velocity'/>
+      </ParameterList>
+      <ParameterList  name='Y-Dir Inlet'>
+        <Parameter  name='Type'     type='string' value='Fixed Value'/>
+        <Parameter  name='Value'    type='double' value='0'/>
+        <Parameter  name='Index'    type='int'    value='1'/>
+        <Parameter  name='Sides'    type='string' value='velocity'/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name='Pressure Essential Boundary Conditions'>
+      <ParameterList  name='Zero Pressure'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='pressure'/>
+      </ParameterList>
+    </ParameterList>
+
+  </ParameterList>
+
+</ParameterList>

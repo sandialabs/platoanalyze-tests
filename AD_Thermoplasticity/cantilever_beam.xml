@@ -53,8 +53,8 @@
         <ParameterList name='Isotropic Linear Thermoelastic'>                                                             
           <Parameter  name='Poissons Ratio' type='double' value='0.3'/>                     
           <Parameter  name='Youngs Modulus' type='double' value='75.0e3'/>
-          <Parameter  name='Thermal Conductivity Coefficient' type='double' value='180.'/>
-          <Parameter  name='Thermal Expansion Coefficient' type='double' value='2.32e-5'/>
+          <Parameter  name='Thermal Conductivity' type='double' value='180.'/>
+          <Parameter  name='Thermal Expansivity' type='double' value='2.32e-5'/>
           <Parameter  name='Reference Temperature' type='double' value='0.0'/>                
         </ParameterList>                                                                    
         <ParameterList name='Plasticity Model'>                                               
@@ -75,14 +75,14 @@
       <ParameterList  name="Mechanical Natural Boundary Conditions">
         <!-- <ParameterList  name="Traction Vector Boundary Condition">
           <Parameter  name="Type"     type="string"        value="Uniform"/>
-          <Parameter  name="Values"   type="Array(double)" value="{-174.0, 0.0, 0.0}"/>
+          <Parameter  name="Values"   type="Array(string)" value="{-174.0*t, 0.0, 0.0}"/>
           <Parameter  name="Sides"    type="string"        value="load_ss"/>
         </ParameterList> -->
       </ParameterList>
       <ParameterList  name="Thermal Natural Boundary Conditions">
         <ParameterList  name="Flux Density Boundary Condition">
           <Parameter  name="Type"     type="string" value="Uniform"/>
-          <Parameter  name="Value"   type="double"  value="0.0e3"/>
+          <Parameter  name="Value"    type="string" value="0.0e3*t"/>
           <Parameter  name="Sides"    type="string" value="load_ss"/>
         </ParameterList>
       </ParameterList>

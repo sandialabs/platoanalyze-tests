@@ -9,8 +9,7 @@
 <PDataArray type="Int8" Name="class_dim" NumberOfComponents="1" format="binary"/>
 <PDataArray type="Int32" Name="class_id" NumberOfComponents="1" format="binary"/>
 <PDataArray type="Float64" Name="Displacements" NumberOfComponents="3" format="binary"/>
-<PDataArray type="Float64" Name="Velocity" NumberOfComponents="3" format="binary"/>
-<PDataArray type="Float64" Name="Acceleration" NumberOfComponents="3" format="binary"/>
+<PDataArray type="Float64" Name="Topology" NumberOfComponents="1" format="binary"/>
 </PPointData>
 <PCellData>
 <PDataArray type="Int64" Name="global" NumberOfComponents="1" format="binary"/>

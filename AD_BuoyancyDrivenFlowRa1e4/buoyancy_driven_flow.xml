@@ -1,0 +1,85 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="2"/>
+
+  <Parameter name="Input Mesh" type="string" value="buoyancy_driven_flow.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Incompressible Fluids"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Hyperbolic"/>
+
+    <ParameterList name='Hyperbolic'>
+      <Parameter name='Heat Transfer' type='string' value='Natural'/>
+    </ParameterList>
+
+    <ParameterList name='Spatial Model'>
+      <ParameterList name='Domains'>
+        <ParameterList name='Design Volume'>
+          <Parameter name='Element Block' type='string' value='block_1'/>
+          <Parameter name='Material Model' type='string' value='air'/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name='Material Models'>
+      <ParameterList name='air'>
+	<Parameter  name='Thermal Diffusivity' type='double' value='2.1117e-5'/>
+        <Parameter  name='Kinematic Viscocity' type='double' value='1.5111e-5'/>
+        <Parameter  name='Prandtl Number'  type='double' value='0.71'/>
+        <Parameter  name='Rayleigh Number' type='Array(double)' value='{0,1e4}'/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name='Time Integration'>
+      <Parameter name='Safety Factor'      type='double' value='0.9'/>
+    </ParameterList>
+
+    <ParameterList  name='Linear Solver'>
+      <Parameter name='Solver Stack' type='string' value='amgx'/>
+    </ParameterList>
+
+    <ParameterList  name='Convergence'>
+      <Parameter name='Maximum Iterations' type='int' value='500'/>
+      <Parameter name='Output Frequency' type='int' value='1'/>
+      <Parameter name='Steady State Tolerance' type='double' value='1e-3'/>
+    </ParameterList>
+
+    <ParameterList  name='Velocity Essential Boundary Conditions'>
+      <ParameterList  name='X-Dir No-Slip'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='no_slip'/>
+      </ParameterList>
+      <ParameterList  name='Y-Dir No-Slip'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='1'/>
+        <Parameter  name='Sides'    type='string' value='no_slip'/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name='Temperature Essential Boundary Conditions'>
+      <ParameterList  name='Cold Wall'>
+        <Parameter  name='Type'     type='string' value='Fixed Value'/>
+        <Parameter  name='Value'    type='double' value='0.0'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='cold'/>
+      </ParameterList>
+      <ParameterList  name='Hot Wall'>
+        <Parameter  name='Type'     type='string' value='Fixed Value'/>
+	<Parameter  name='Value'    type='double' value='1.0'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='hot'/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name='Pressure Essential Boundary Conditions'>
+      <ParameterList  name='Pressure'>
+        <Parameter  name='Type'     type='string' value='Zero Value'/>
+        <Parameter  name='Index'    type='int'    value='0'/>
+        <Parameter  name='Sides'    type='string' value='press'/>
+      </ParameterList>
+    </ParameterList>
+
+  </ParameterList>
+  
+</ParameterList>

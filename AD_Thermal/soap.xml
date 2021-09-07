@@ -11,12 +11,14 @@
 
     <Parameter name="Self-Adjoint"       type="bool"    value="true"/>
 
-    <ParameterList name="My Internal Thermal Energy">
-      <Parameter name='Type' type='string' value='Scalar Function'/> 
-      <Parameter name='Scalar Function Type' type='string' value='Internal Thermal Energy'/>
-      <ParameterList name="Penalty Function">
-        <Parameter name="Type" type="string" value="SIMP"/>
-        <Parameter name="Exponent" type="double" value="1.0"/>
+    <ParameterList name="Criteria">
+      <ParameterList name="My Internal Thermal Energy">
+        <Parameter name='Type' type='string' value='Scalar Function'/> 
+        <Parameter name='Scalar Function Type' type='string' value='Internal Thermal Energy'/>
+        <ParameterList name="Penalty Function">
+          <Parameter name="Type" type="string" value="SIMP"/>
+          <Parameter name="Exponent" type="double" value="1.0"/>
+        </ParameterList>
       </ParameterList>
     </ParameterList>
 
