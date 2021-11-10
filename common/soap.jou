@@ -9,7 +9,7 @@ webcut volume 1 with cylinder radius 0.25 axis z
 delete volume 2
 move volume all x 1
 volume all scheme tetmesh
-body all size 0.1
+body all size 0.04
 mesh volume all
 nodeset 1440 surface 4
 nodeset 1440 name "ns_1440"
