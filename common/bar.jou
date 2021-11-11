@@ -4,12 +4,12 @@
 ## Revised 2017-08-28 12:10:34 -0600 (Mon, 28 Aug 2017)
 ## Running 10/25/2017 04:21:42 PM
 ## Command Options:
-create brick x 2 y 1 z 0.75
+create brick x 2 y 0.5 z 0.5
 #webcut volume 1 with cylinder radius 0.25 axis z
 #delete volume 2
 move volume all x 1
 volume all scheme tetmesh
-body all size 0.1
+body all size 0.04
 mesh volume all
 nodeset 1 surface 4
 nodeset 1 name "ns_1"

@@ -3,12 +3,12 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/bar.xml
                  ${CMAKE_CURRENT_BINARY_DIR}/bar.xml COPYONLY)
 configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
                  ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
-configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/bar.exo
+configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/../common/bar.exo
                  ${CMAKE_CURRENT_BINARY_DIR}/bar.exo COPYONLY)
 
 set( CONFIG_FILE "bar.xml" )
-set( RUN_TIME 0.8 )
-set( NUM_RUNS 10 )
+set( RUN_TIME 2.6 )
+set( NUM_RUNS 2 )
 set( OUTPUT_DIR "output_data" )
 
 get_filename_component(testDirName ${CMAKE_CURRENT_SOURCE_DIR} NAME)

@@ -14,6 +14,6 @@ nodeset 1 name "fixed"
 sideset 2 surface 6
 sideset 2 name "load"
 volume all scheme tetmesh
-volume all size 0.1
+volume all size 0.05
 mesh volume all
 export mesh '3blocks.exo' overwrite
