@@ -7,7 +7,7 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
                  ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
 
 set( CONFIG_FILE "cantilever_beam.xml" )
-set( RUN_TIME 16.0 )
+set( RUN_TIME 11.0 )
 set( NUM_RUNS 3 )
 set( OUTPUT_DIR "output_data" )
 

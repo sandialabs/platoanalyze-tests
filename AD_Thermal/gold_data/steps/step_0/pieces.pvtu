@@ -1,5 +1,5 @@
 <VTKFile type="PUnstructuredGrid">
-<PUnstructuredGrid GhostLevel="1">
+<PUnstructuredGrid GhostLevel="0">
 <PPoints>
 <PDataArray type="Float64" Name="coordinates" NumberOfComponents="3" format="binary"/>
 </PPoints>

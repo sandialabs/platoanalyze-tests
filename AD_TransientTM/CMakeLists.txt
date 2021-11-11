@@ -3,11 +3,11 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/soap.xml
                  ${CMAKE_CURRENT_BINARY_DIR}/soap.xml COPYONLY)
 configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
                  ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
-configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/soap.exo
+configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/../common/soap_lowres.exo
                  ${CMAKE_CURRENT_BINARY_DIR}/soap.exo COPYONLY)
 
 set( CONFIG_FILE "soap.xml" )
-set( RUN_TIME 22.0 )
+set( RUN_TIME 28.0 )
 set( NUM_RUNS 1 )
 set( OUTPUT_DIR "output_data" )
 

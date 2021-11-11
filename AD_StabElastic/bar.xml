@@ -55,17 +55,17 @@
       <ParameterList  name="neg X Fixed Displacement X Boundary Condition">
         <Parameter  name="Type"     type="string" value="Zero Value"/>
         <Parameter  name="Index"    type="int"    value="0"/>
-        <Parameter  name="Sides"    type="string" value="ns_101"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
       </ParameterList>
       <ParameterList  name="neg X Fixed Displacement Y Boundary Condition">
         <Parameter  name="Type"     type="string" value="Zero Value"/>
         <Parameter  name="Index"    type="int"    value="1"/>
-        <Parameter  name="Sides"    type="string" value="ns_101"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
       </ParameterList>
       <ParameterList  name="neg X Fixed Displacement Z Boundary Condition">
         <Parameter  name="Type"     type="string" value="Zero Value"/>
         <Parameter  name="Index"    type="int"    value="2"/>
-        <Parameter  name="Sides"    type="string" value="ns_101"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
       </ParameterList>
     </ParameterList>
   </ParameterList>
