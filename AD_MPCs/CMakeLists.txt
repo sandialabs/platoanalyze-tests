@@ -23,18 +23,7 @@ add_test( NAME ${TEST_NAME}_timing
           -DNUM_RUNS=${NUM_RUNS}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/timer.cmake )
 
-if(USE_OMEGAH_MESH)
-  ## create test
-  add_test( NAME ${TEST_NAME}_regression
-            COMMAND ${CMAKE_COMMAND}
-            -DANALYZE_EXECUTABLE=${CMAKE_BINARY_DIR}/analyze
-            -DCONFIG_FILE=${CONFIG_FILE}
-            -DOUTPUT_DATA=${OUTPUT_DATA}
-            -DGOLD_DIR=${CMAKE_CURRENT_SOURCE_DIR}/gold_data
-            -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/vtk.diff
-            -DDIFF=${VTKDIFF}
-            -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
-else()
+if (PLATOANALYZE_ENABLE_ENGINEMESH)
   ## create test
   add_test( NAME ${TEST_NAME}_regression
             COMMAND ${CMAKE_COMMAND}
@@ -44,5 +33,16 @@ else()
             -DGOLD_DATA=${CMAKE_CURRENT_SOURCE_DIR}/gold_data.exo
             -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/exo.diff
             -DDIFF=${EXODIFF}
+            -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
+else()
+  ## create test
+  add_test( NAME ${TEST_NAME}_regression
+            COMMAND ${CMAKE_COMMAND}
+            -DANALYZE_EXECUTABLE=${CMAKE_BINARY_DIR}/analyze
+            -DCONFIG_FILE=${CONFIG_FILE}
+            -DOUTPUT_DATA=${OUTPUT_DATA}
+            -DGOLD_DATA=${CMAKE_CURRENT_SOURCE_DIR}/gold_data
+            -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/vtk.diff
+            -DDIFF=${VTKDIFF}
             -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
 endif()
