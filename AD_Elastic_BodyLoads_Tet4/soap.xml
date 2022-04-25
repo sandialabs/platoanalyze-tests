@@ -48,7 +48,7 @@
   
     <ParameterList  name="Body Loads">
       <ParameterList name="y Component">
-        <Parameter  name="Function" type="string" value="-2700.0*9.81*0.5"/>
+        <Parameter  name="Function" type="string" value="0.0-2700.0*9.81*0.5"/>
         <Parameter  name="Index" type="int" value="1"/>
       </ParameterList>
     </ParameterList>
