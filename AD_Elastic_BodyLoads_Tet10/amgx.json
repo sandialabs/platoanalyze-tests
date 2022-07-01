@@ -26,14 +26,14 @@
             "postsweeps": 2, 
             "cycle": "V"
         }, 
-        "solver": "PCG", 
+        "solver": "PBICGSTAB", 
         "print_solve_stats": 1, 
         "obtain_timings": 1, 
         "max_iters": 1000, 
         "monitor_residual": 1, 
         "convergence": "ABSOLUTE", 
         "scope": "main", 
-        "tolerance": 1.0e-07, 
+        "tolerance": 1.0e-10, 
         "norm": "L2"
     }
 }

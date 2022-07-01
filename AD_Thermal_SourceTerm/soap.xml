@@ -46,7 +46,7 @@
   
     <ParameterList  name="Body Loads">
       <ParameterList name="Energy Source Term">
-        <Parameter  name="Function" type="string" value="100.0*exp(-(1-x)^2/(0.1)^2)"/>
+        <Parameter  name="Function" type="string" value="100.0*exp(0.0-(1-x)^2/(0.1)^2)"/>
       </ParameterList>
     </ParameterList>
 
