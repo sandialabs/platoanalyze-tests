@@ -7,8 +7,8 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
                  ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
 
 set( CONFIG_FILE "cube.xml" )
-set( RUN_TIME 1.0 )
-set( NUM_RUNS 2 )
+set( RUN_TIME 1.3 )
+set( NUM_RUNS 3 )
 set( OUTPUT_DATA "output_data" )
 
 get_filename_component(testDirName ${CMAKE_CURRENT_SOURCE_DIR} NAME)
