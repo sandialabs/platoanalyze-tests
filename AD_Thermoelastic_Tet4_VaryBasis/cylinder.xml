@@ -1,0 +1,133 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="3"/>
+
+  <Parameter name="Input Mesh" type="string" value="cylinder.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"            type="string"  value="Thermomechanical"/>
+    <Parameter name="PDE Constraint"     type="string"  value="Elliptic"/>
+
+    <Parameter name="Self-Adjoint"       type="bool"    value="false"/>
+
+    <ParameterList name="Criteria">
+      <ParameterList name="My Volume">
+        <Parameter name='Linear' type='bool' value='true'/>
+        <Parameter name='Type' type='string' value='Scalar Function'/> 
+        <Parameter name='Scalar Function Type' type='string' value='Volume'/>
+        <ParameterList name="Penalty Function">
+          <Parameter name="Type" type="string" value="SIMP"/>
+          <Parameter name="Exponent" type="double" value="1.0"/>
+          <Parameter name="Minimum Value" type="double" value="0.0"/>
+        </ParameterList>
+      </ParameterList>
+
+      <ParameterList name="Internal Thermoelastic Energy">
+        <Parameter name='Type' type='string' value='Scalar Function'/> 
+        <Parameter name='Scalar Function Type' type='string' value='Internal Thermoelastic Energy'/>
+        <ParameterList name="Penalty Function">
+          <Parameter name="Type" type="string" value="SIMP"/>
+          <Parameter name="Exponent" type="double" value="3.0"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Input Data">
+      <ParameterList name="Basis">
+        <Parameter name="Input File" type="string" value="basis.csv"/>
+        <Parameter name="Centering" type="string" value="Element"/>
+        <Parameter  name="Columns" type="Array(string)" value="{index, X0, X1, X2, Y0, Y1, Y2, Z0, Z1, Z2}"/>
+        <ParameterList name="Transform">
+          <Parameter name="Type" type="string" value="Orthonormal Tensor"/>
+          <Parameter name="Field Name" type="string" value="Element Bases"/>
+          <Parameter  name="X" type="Array(string)" value="{X0, X1, X2}"/>
+          <Parameter  name="Y" type="Array(string)" value="{Y0, Y1, Y2}"/>
+          <Parameter  name="Z" type="Array(string)" value="{Z0, Z1, Z2}"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Elliptic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="3.0"/>
+        <Parameter name="Minimum Value" type="double" value="1.0e-3"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Basis Field" type="string" value="Element Bases"/>
+          <Parameter name="Element Block" type="string" value="block_1"/>
+          <Parameter name="Material Model" type="string" value="Unobtainium"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Unobtainium">
+        <ParameterList name="Thermoelastic">
+          <Parameter name="Reference Temperature" type="double" value="1e-2"/>
+          <Parameter name="Thermal Conductivity" type="double" value="910.0"/>
+          <Parameter name="Thermal Expansivity" type="double" value="1.0e-5"/>
+          <ParameterList name="Elastic Stiffness">
+            <!-- see orthotropic_stiffness.nb
+               Constants below correspond to:
+               nu_xy=0.30, nu_yz=0.33, nu_xz=0.27,
+               E_x=1e11,   E_y=2e11,   E_z=4e11,
+               G_xy=1e10,  G_yz=2e10,  G_xz=3e10
+             -->
+            <Parameter name="c11" type="double" value="1.32066e11"/>
+            <Parameter name="c22" type="double" value="2.74802e11"/>
+            <Parameter name="c33" type="double" value="5.39467e11"/>
+            <Parameter name="c12" type="double" value="5.76667e10"/>
+            <Parameter name="c13" type="double" value="5.46877e10"/>
+            <Parameter name="c23" type="double" value="1.21825e11"/>
+            <Parameter name="c44" type="double" value="2.0e10"/>
+            <Parameter name="c55" type="double" value="3.0e10"/>
+            <Parameter name="c66" type="double" value="1.0e10"/>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Mechanical Natural Boundary Conditions">
+      <ParameterList  name="Traction Vector Boundary Condition">
+        <Parameter  name="Type"     type="string"        value="Uniform"/>
+        <Parameter  name="Values"   type="Array(double)" value="{0.0, 0.0, 1.0e5}"/>
+        <Parameter  name="Sides"    type="string"        value="loaded"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Thermal Natural Boundary Conditions">
+      <ParameterList  name="Surface Flux Boundary Condition">
+        <Parameter  name="Type"     type="string"   value="Uniform"/>
+        <Parameter  name="Value"    type="double"   value="0.0"/>
+        <Parameter  name="Sides"    type="string"   value="loaded"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="X Fixed Displacement">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="0"/>
+        <Parameter  name="Sides"    type="string" value="fixed"/>
+      </ParameterList>
+      <ParameterList  name="Y Fixed Displacement">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="1"/>
+        <Parameter  name="Sides"    type="string" value="fixed"/>
+      </ParameterList>
+      <ParameterList  name="Z Fixed Displacement">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="2"/>
+        <Parameter  name="Sides"    type="string" value="fixed"/>
+      </ParameterList>
+      <ParameterList  name="Fixed Temperature">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="3"/>
+        <Parameter  name="Sides"    type="string" value="fixed"/>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+</ParameterList>

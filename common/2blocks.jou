@@ -1,0 +1,22 @@
+## /home/jrobbin/opt/cubit/15.3/bin/cubitx
+## Cubit Version 15.3
+## Cubit Build 413520
+## Revised 2018-09-20 09:38:41 -0600 (Thu, 20 Sep 2018)
+## Running 09/09/2022 09:19:26 AM
+## Command Options:
+create brick x 1 y 1 z 2
+webcut vol all with plane zplane
+imprint all
+merge all
+volume all size 0.1
+mesh volume all
+htet volume all structured
+sideset 1 surface 2
+sideset 1 name "fixed"
+sideset 2 surface 1
+sideset 2 name "loaded"
+block 1 volume 1
+block 1 name "block_1"
+block 2 volume 2
+block 2 name "block_2"
+export mesh "twoblock.exo" overwrite

@@ -1,0 +1,23 @@
+## /home/jrobbin/opt/cubit/15.3/bin/cubitx
+## Cubit Version 15.3
+## Cubit Build 413520
+## Revised 2018-09-20 09:38:41 -0600 (Thu, 20 Sep 2018)
+## Running 09/15/2022 05:09:22 PM
+## Command Options:
+create cylinder height 1 radius 1
+create cylinder height 1 radius 0.8
+subtract volume 2 from volume 1
+webcut volume all with plane xplane
+webcut volume all with plane yplane
+imprint all
+merge all
+volume all size 0.1
+mesh volume all
+htet volume all structured
+block 1 volume all
+block 1 name "block_1"
+sideset 1 surface 25 33 41 29
+sideset 1 name "fixed"
+sideset 2 surface 35 39 31 23
+sideset 2 name "loaded"
+export mesh "cylinder.exo" overwrite
