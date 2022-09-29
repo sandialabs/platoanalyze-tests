@@ -7,7 +7,7 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/../common/soap_lowres.exo
                  ${CMAKE_CURRENT_BINARY_DIR}/soap.exo COPYONLY)
 
 set( CONFIG_FILE "soap.xml" )
-set( RUN_TIME 28.0 )
+set( RUN_TIME 35.0 )
 set( NUM_RUNS 1 )
 set( OUTPUT_DATA "output_data" )
 

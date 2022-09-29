@@ -8,9 +8,9 @@ NODAL VARIABLES
 	"displacement X" relative 1.0e-5 floor 1e-10
 	"displacement Y" relative 1.0e-5 floor 1e-10
 	"displacement Z" relative 1.0e-5 floor 1e-10
-	"velocity X" relative 1.0e-4 floor 1e-8
-	"velocity Y" relative 1.0e-4 floor 1e-8
-	"velocity Z" relative 1.0e-4 floor 1e-8
+	"velocity X" relative 1.0e-4 floor 1e-7
+	"velocity Y" relative 1.0e-4 floor 1e-7
+	"velocity Z" relative 1.0e-4 floor 1e-7
 
 # No ELEMENT VARIABLES
 
