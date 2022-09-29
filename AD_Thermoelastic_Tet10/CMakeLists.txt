@@ -7,7 +7,7 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
                  ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
 
 set( CONFIG_FILE "soap.xml" )
-set( RUN_TIME 2.6 )
+set( RUN_TIME 3.5 )
 set( NUM_RUNS 2 )
 set( OUTPUT_DATA "output_data" )
 

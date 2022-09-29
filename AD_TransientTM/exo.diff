@@ -5,9 +5,9 @@ TIME STEPS relative 1.e-6 floor 0.0     # min:               0 @ t1 max:        
 # No GLOBAL VARIABLES
 
 NODAL VARIABLES
-	"displacement X" relative 1.0e-6 floor 1e-10
-	"displacement Y" relative 1.0e-6 floor 1e-10
-	"displacement Z" relative 1.0e-6 floor 1e-10
+	"displacement X" relative 1.0e-4 floor 1e-8
+	"displacement Y" relative 1.0e-4 floor 1e-8
+	"displacement Z" relative 1.0e-4 floor 1e-8
 	temperature relative 1.0e-6 floor 1e-10
 	"velocity X" relative 1.0e-6 floor 1e-10
 	"velocity Y" relative 1.0e-6 floor 1e-10
