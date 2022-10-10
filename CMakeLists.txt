@@ -47,7 +47,7 @@ ADD_SUBDIRECTORY(AD_TransientTDBCs)
 endif()
 
 if(PARABOLIC)
-#ADD_SUBDIRECTORY(AD_TransientTM)
+ADD_SUBDIRECTORY(AD_TransientTM)
 ADD_SUBDIRECTORY(AD_HeatEquation)
 endif()
 
