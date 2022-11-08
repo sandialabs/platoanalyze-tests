@@ -75,6 +75,9 @@
         <Parameter  name="Sides"    type="string" value="ns_1440"/>
       </ParameterList>
     </ParameterList>
+    <ParameterList  name="Linear Solver">
+      <Parameter  name="Solver Stack" type="string" value="AmgX"/>
+    </ParameterList>
   </ParameterList>
 
 </ParameterList>
