@@ -35,6 +35,8 @@ if(ELLIPTIC)
     ADD_SUBDIRECTORY(AD_Thermal_Hex27)
     ADD_SUBDIRECTORY(AD_Thermoelastic_Hex8)
     ADD_SUBDIRECTORY(AD_Thermoelastic_Hex27)
+    ADD_SUBDIRECTORY(Variable_Temp)
+    ADD_SUBDIRECTORY(Variable_Pressure)
   endif()
 endif()
 
