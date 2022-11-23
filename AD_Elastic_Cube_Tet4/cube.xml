@@ -48,7 +48,7 @@
     <ParameterList  name="Natural Boundary Conditions">
       <ParameterList  name="Traction Vector Boundary Condition">
         <Parameter  name="Type"     type="string"        value="Uniform"/>
-        <Parameter  name="Values"   type="Array(double)" value="{1.0, 0.0}"/>
+        <Parameter  name="Values"   type="Array(double)" value="{1.0, 0.0, 0.0}"/>
         <Parameter  name="Sides"    type="string"        value="loaded"/>
       </ParameterList>
     </ParameterList>
