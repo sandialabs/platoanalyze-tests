@@ -12,8 +12,8 @@ compress vol all # Renumber volumes
 
 # Mesh
 imprint vol all # creates surface for PBC nodesets
-vol 1 size 0.3    # Cup: 0.48 coarsest | 0.2 coarse | 0.1 fine
-vol 2 size 0.3    # Ball: 0.6 coarsest | 0.5 coarse | 0.2 fine
+vol 1 size 0.2    # Cup: 0.48 coarsest | 0.2 coarse | 0.1 fine
+vol 2 size 0.5    # Ball: 0.6 coarsest | 0.5 coarse | 0.2 fine
 vol all scheme tetmesh
 mesh vol all
 
