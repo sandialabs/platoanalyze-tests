@@ -3,6 +3,8 @@ configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/ball_in_cup.xml
                  ${CMAKE_CURRENT_BINARY_DIR}/ball_in_cup.xml COPYONLY)
 configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/ball_in_cup.exo
                  ${CMAKE_CURRENT_BINARY_DIR}/ball_in_cup.exo COPYONLY)
+configure_file(  ${CMAKE_CURRENT_SOURCE_DIR}/amgx.json
+                 ${CMAKE_CURRENT_BINARY_DIR}/amgx.json COPYONLY)
 
 set( CONFIG_FILE "ball_in_cup.xml" )
 set( RUN_TIME 3.5 )
