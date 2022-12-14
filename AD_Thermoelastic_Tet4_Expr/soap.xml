@@ -1,0 +1,138 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="3"/>
+
+  <Parameter name="Input Mesh" type="string" value="./soap.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Thermomechanical"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Elliptic"/>
+
+    <ParameterList name="Elliptic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="1.0"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Element Block" type="string" value="block_1"/>
+          <Parameter name="Material Model" type="string" value="Unobtainium"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Unobtainium">
+        <ParameterList name="Thermoelastic">
+          <ParameterList name="Elastic Stiffness Expression">
+            <Parameter name="Symmetry" type="string" value="isotropic" />
+            <ParameterList name="Youngs Modulus">
+              <Parameter name="Constant Names" type="Array(string)" value="{E0}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{1e11}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="E0*(0.001 + (1.0 - 0.001)*Z*Z*Z)"/>
+            </ParameterList>
+            <ParameterList name="Poissons Ratio">
+              <Parameter name="Constant Names" type="Array(string)" value="{v0, v1}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{0.20, 0.30}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="v0+(v1-v0)*Z"/>
+            </ParameterList>
+          </ParameterList>
+<!--
+          <ParameterList name="Elastic Stiffness Expression">
+            <Parameter name="Symmetry" type="string" value="cubic" />
+            <ParameterList name="Youngs Modulus">
+              <Parameter name="Constant Names" type="Array(string)" value="{E0}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{1e11}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="E0*(0.001 + (1.0 - 0.001)*Z*Z*Z)"/>
+            </ParameterList>
+            <ParameterList name="Poissons Ratio">
+              <Parameter name="Constant Names" type="Array(string)" value="{v0, v1}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{0.20, 0.30}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="v0+(v1-v0)*Z"/>
+            </ParameterList>
+            <ParameterList name="Shear Modulus">
+              <Parameter name="Constant Names" type="Array(string)" value="{G0}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{2e10}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="G0*(0.001 + (1.0 - 0.001)*Z*Z*Z)"/>
+            </ParameterList>
+          </ParameterList>
+-->
+<!--
+          <ParameterList name="Elastic Stiffness Expression">
+            <Parameter name="Symmetry" type="string" value="orthotropic" />
+            <ParameterList name="Exx">
+              <Parameter name="Constant Names" type="Array(string)" value="{E0}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{1e11}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="E0*(0.001 + (1.0 - 0.001)*Z*Z*Z)"/>
+            </ParameterList>
+            <ParameterList name="vxx">
+              <Parameter name="Constant Names" type="Array(string)" value="{v0, v1}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{0.20, 0.30}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="v0+(v1-v0)*Z"/>
+            </ParameterList>
+            <ParameterList name="Gxx">
+              <Parameter name="Constant Names" type="Array(string)" value="{G0}"/>
+              <Parameter name="Constant Values" type="Array(double)" value="{2e10}"/>
+              <Parameter name="Independent Variable Name" type="string" value="Z"/>
+              <Parameter name="Expression" type="string" value="G0*(0.001 + (1.0 - 0.001)*Z*Z*Z)"/>
+            </ParameterList>
+            ...
+          </ParameterList>
+-->
+          <Parameter  name="Thermal Expansivity" type="double" value="1.0e-5"/>
+          <Parameter  name="Thermal Conductivity" type="double" value="910.0"/>
+          <Parameter  name="Reference Temperature" type="double" value="10.0"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Mechanical Natural Boundary Conditions">
+      <ParameterList  name="Traction Vector Boundary Condition">
+        <Parameter  name="Type"     type="string"        value="Uniform"/>
+        <Parameter  name="Values"   type="Array(double)" value="{0.0e4, 0.0, 0.0}"/>
+        <Parameter  name="Sides"    type="string"        value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Thermal Natural Boundary Conditions">
+      <ParameterList  name="Flux Density Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Uniform"/>
+        <Parameter  name="Value"   type="double"  value="1.0e3"/>
+        <Parameter  name="Sides"    type="string" value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="X Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="0"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Y Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="1"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Z Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="2"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Fixed Potential Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="3"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+
+</ParameterList>
+

@@ -128,7 +128,7 @@
      </ParameterList>
 
      <ParameterList name="Linear Solver">
-       <Parameter name="Relative Diagonal Offset" type="double" value="1.0e-8"/>
+       <Parameter name="Solver Stack" type="string" value="AmgX"/>
      </ParameterList>
 
   </ParameterList>
