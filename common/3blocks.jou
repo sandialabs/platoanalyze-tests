@@ -1,0 +1,19 @@
+create brick x 3 y 1 z 1
+webcut volume all with plane xplane offset 0.5
+webcut volume all with plane xplane offset -0.5
+imprint all
+merge all
+block 1 volume 3
+block 2 volume 2
+block 3 volume 1
+block 1 name "block_1"
+block 2 name "block_2"
+block 3 name "block_3"
+nodeset 1 surface 4
+nodeset 1 name "fixed"
+sideset 2 surface 6
+sideset 2 name "load"
+volume all scheme tetmesh
+volume all size 0.05
+mesh volume all
+export mesh '3blocks.exo' overwrite

@@ -1,0 +1,1 @@
+./analyze --input-config=input.xml --output-viz=results

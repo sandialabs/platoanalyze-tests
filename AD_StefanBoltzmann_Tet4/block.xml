@@ -1,0 +1,61 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+
+  <Parameter name="Input Mesh" type="string" value="block.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Thermal"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Elliptic"/>
+
+    <ParameterList name="Elliptic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="1.0"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Newton Iteration">
+      <Parameter name="Maximum Iterations" type="int" value="10"/>
+      <Parameter name="Residual Tolerance" type="double" value="1e-7"/>
+      <Parameter name="Increment Tolerance" type="double" value="1e-4"/>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Element Block" type="string" value="body"/>
+          <Parameter name="Material Model" type="string" value="Unobtainium"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Unobtainium">
+        <ParameterList name="Thermal Conduction">
+          <Parameter  name="Thermal Conductivity" type="double" value="1.0"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Natural Boundary Conditions">
+      <ParameterList  name="Radiative Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Stefan Boltzmann"/>
+        <Parameter  name="Sides"    type="string" value="loaded"/>
+      </ParameterList>
+      <ParameterList  name="Flux Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Uniform"/>
+        <Parameter  name="Value"   type="double"  value="10000.0"/>
+        <Parameter  name="Sides"    type="string" value="loaded"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="Fixed Potential Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="0"/>
+        <Parameter  name="Sides"    type="string" value="fixed"/>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+
+</ParameterList>
+

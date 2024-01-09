@@ -1,0 +1,26 @@
+reset
+
+brick x 4 y 1 z 1
+
+vol 1 size {1/4}
+mesh vol 1
+
+htet vol 1 structured
+
+block 1 vol 1
+block 1 name "block_1"
+
+sideset 1 surf 4
+sideset 1 name "fixed_ss"
+sideset 2 surf 6
+sideset 2 name "load_ss"
+sideset 3 surf 3
+sideset 3 name "fixed_ss_y"
+sideset 4 surf 2
+sideset 4 name "fixed_ss_z"
+
+list model
+
+set exodus netcdf4 off
+set large exodus file on
+export mesh "rod.exo"  overwrite 

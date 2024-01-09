@@ -1,0 +1,91 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="3"/>
+
+  <Parameter name="Input Mesh" type="string" value="./soap.exo"/>
+  
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Thermal"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Parabolic"/>
+
+    <Parameter name="Self-Adjoint"       type="bool"    value="false"/>
+
+    <ParameterList name="Time Integration">
+      <Parameter name="Number Time Steps" type="int" value="80"/>
+      <Parameter name="Time Step" type="double" value="60.0"/>
+      <Parameter name="Trapezoid Alpha" type="double" value="0.5"/>
+    </ParameterList>
+
+    <ParameterList name="Newton Iteration">
+      <Parameter name="Maximum Iterations" type="int" value="3"/>
+      <Parameter name="Residual Tolerance" type="double" value="1e-7"/>
+      <Parameter name="Increment Tolerance" type="double" value="1e-4"/>
+    </ParameterList>
+
+    <ParameterList name="Parabolic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="1.0"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Element Block" type="string" value="block_1"/>
+          <Parameter name="Material Model" type="string" value="Aluminum"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Aluminum">
+        <ParameterList name="Thermal Mass">
+          <Parameter name="Temperature Dependent" type="bool" value="true"/>
+          <ParameterList name="Specific Heat">
+            <Parameter name="c0" type="double" value="900.0"/>
+            <Parameter name="c1" type="double" value="5.0e-4"/>
+          </ParameterList>
+          <Parameter  name="Mass Density" type="double" value="2703.0"/>
+        </ParameterList>
+
+        <ParameterList name="Thermal Conduction">
+          <Parameter  name="Thermal Conductivity" type="double" value="210.0"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Computed Fields">
+      <ParameterList  name="Initial Temperature">
+        <Parameter  name="Function" type="string"   value="100.0"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name="Initial Temperature">
+      <Parameter  name="Computed Field" type="string" value="Initial Temperature"/>
+    </ParameterList>
+
+    <ParameterList  name="Natural Boundary Conditions">
+      <ParameterList  name="Flux Boundary Condition">
+        <Parameter  name="Type"     type="string"   value="Uniform"/>
+        <Parameter  name="Value"    type="double"   value="1.0e5"/>
+        <Parameter  name="Sides"    type="string"   value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="Fixed Temperature Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="Linear Solver">
+      <Parameter name="Solver" type="string" value="AztecOO"/>
+      <Parameter name="Display Iterations" type="int" value="0"/>
+      <Parameter name="Iterations" type="int" value="100"/>
+      <Parameter name="Tolerance" type="double" value="1e-14"/>
+    </ParameterList>
+  </ParameterList>
+
+</ParameterList>
+

@@ -1,0 +1,74 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="3"/>
+
+  <Parameter name="Input Mesh" type="string" value="./bar.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Stabilized Mechanical"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Elliptic"/>
+
+    <ParameterList name="Elliptic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="1.0"/>
+      </ParameterList>
+      <Parameter  name="Plottable" type="Array(string)" value="{pressure, deviatoric stress}"/>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Element Block" type="string" value="block_1"/>
+          <Parameter name="Material Model" type="string" value="Unobtainium"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Time Stepping">
+      <Parameter name="Number Time Steps" type="int" value="2"/>
+      <Parameter name="Time Step" type="double" value="60.0"/>
+    </ParameterList>
+
+    <ParameterList name="Newton Iteration">
+      <Parameter name="Number Iterations" type="int" value="2"/>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Unobtainium">
+        <ParameterList name="Isotropic Linear Elastic">
+          <Parameter  name="Poissons Ratio" type="double" value="0.4999"/>
+          <Parameter  name="Youngs Modulus" type="double" value="1.0e11"/>
+          <Parameter  name="Pressure Scaling" type="double" value="1e12"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Mechanical Natural Boundary Conditions">
+      <ParameterList  name="Traction Vector Boundary Condition">
+        <Parameter  name="Type"     type="string"        value="Uniform"/>
+        <Parameter  name="Values"   type="Array(double)" value="{-1.0e5, 0.0, 0.0}"/>
+        <Parameter  name="Sides"     type="string"        value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="neg X Fixed Displacement X Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="0"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
+      </ParameterList>
+      <ParameterList  name="neg X Fixed Displacement Y Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="1"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
+      </ParameterList>
+      <ParameterList  name="neg X Fixed Displacement Z Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="2"/>
+        <Parameter  name="Sides"    type="string" value="ns_1"/>
+      </ParameterList>
+    </ParameterList>
+  </ParameterList>
+
+</ParameterList>
+

@@ -1,0 +1,101 @@
+<ParameterList name="Problem">
+  <Parameter name="Physics" type="string" value="Plato Driver"/>
+  <Parameter  name="Spatial Dimension"    type="int"    value="3"/>
+
+  <Parameter name="Input Mesh" type="string" value="./soap.exo"/>
+
+  <ParameterList name="Plato Problem">
+    <Parameter name="Physics"         type="string"  value="Thermomechanical"/>
+    <Parameter name="PDE Constraint"  type="string"  value="Elliptic"/>
+
+    <ParameterList name="Elliptic">
+      <ParameterList name="Penalty Function">
+        <Parameter name="Type" type="string" value="SIMP"/>
+        <Parameter name="Exponent" type="double" value="1.0"/>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Spatial Model">
+      <ParameterList name="Domains">
+        <ParameterList name="Design Volume">
+          <Parameter name="Element Block" type="string" value="block_1"/>
+          <Parameter name="Material Model" type="string" value="Unobtainium"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+
+    <ParameterList name="Material Models">
+      <ParameterList name="Unobtainium">
+        <ParameterList name="Thermoelastic">
+          <ParameterList name="Basis">
+            <Parameter  name="X" type="Array(double)" value="{0.0, -1.0, 0.0}"/>
+            <Parameter  name="Y" type="Array(double)" value="{1.0, 0.0, 0.0}"/>
+            <Parameter  name="Z" type="Array(double)" value="{0.0, 0.0, 1.0}"/>
+          </ParameterList>
+          <ParameterList name="Elastic Stiffness">
+            <!--
+               Constants below correspond to:
+               nu_xy=0.30, nu_yz=0.33, nu_xz=0.27,
+               E_x=1e11,   E_y=2e11,   E_z=4e11,
+               G_xy=1e10,  G_yz=2e10,  G_xz=3e10
+             -->
+            <Parameter name="c11" type="double" value="1.32066e11"/>
+            <Parameter name="c22" type="double" value="2.74802e11"/>
+            <Parameter name="c33" type="double" value="5.39467e11"/>
+            <Parameter name="c12" type="double" value="5.76667e10"/>
+            <Parameter name="c13" type="double" value="5.46877e10"/>
+            <Parameter name="c23" type="double" value="1.21825e11"/>
+            <Parameter name="c44" type="double" value="2.0e10"/>
+            <Parameter name="c55" type="double" value="3.0e10"/>
+            <Parameter name="c66" type="double" value="1.0e10"/>
+          </ParameterList>
+          <Parameter  name="Thermal Expansivity" type="double" value="1.0e-5"/>
+          <Parameter  name="Thermal Conductivity" type="double" value="910.0"/>
+          <Parameter  name="Reference Temperature" type="double" value="10.0"/>
+        </ParameterList>
+      </ParameterList>
+    </ParameterList>
+  
+    <ParameterList  name="Mechanical Natural Boundary Conditions">
+      <ParameterList  name="Traction Vector Boundary Condition">
+        <Parameter  name="Type"     type="string"        value="Uniform"/>
+        <Parameter  name="Values"   type="Array(double)" value="{0.0e4, 0.0, 0.0}"/>
+        <Parameter  name="Sides"    type="string"        value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Thermal Natural Boundary Conditions">
+      <ParameterList  name="Flux Density Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Uniform"/>
+        <Parameter  name="Value"   type="double"  value="1.0e3"/>
+        <Parameter  name="Sides"    type="string" value="ss_2"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Essential Boundary Conditions">
+      <ParameterList  name="X Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="0"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Y Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="1"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Z Fixed Displacement Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="2"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+      <ParameterList  name="Fixed Potential Boundary Condition">
+        <Parameter  name="Type"     type="string" value="Zero Value"/>
+        <Parameter  name="Index"    type="int"    value="3"/>
+        <Parameter  name="Sides"    type="string" value="ns_1440"/>
+      </ParameterList>
+    </ParameterList>
+    <ParameterList  name="Linear Solver">
+      <Parameter  name="Solver Stack" type="string" value="AmgX"/>
+    </ParameterList>
+  </ParameterList>
+
+</ParameterList>
+

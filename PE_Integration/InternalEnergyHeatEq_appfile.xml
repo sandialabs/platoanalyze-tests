@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Operation>
+  <Name>Compute ObjectiveX</Name>
+  <Function>ComputeCriterionX</Function>
+  <Criterion>Internal Energy</Criterion>
+  <Input>
+    <ArgumentName>Topology</ArgumentName>
+  </Input>
+  <Output>
+    <Argument>Value</Argument>
+    <ArgumentName>Objective Value</ArgumentName>
+  </Output>
+  <Output>
+    <Argument>Gradient</Argument>
+    <ArgumentName>GradientX</ArgumentName>
+  </Output>
+</Operation>
+
+<Operation>
+  <Name>Compute Objective</Name>
+  <Function>ComputeCriterion</Function>
+  <Criterion>Internal Energy</Criterion>
+  <Input>
+    <ArgumentName>Topology</ArgumentName>
+  </Input>
+  <Output>
+    <Argument>Value</Argument>
+    <ArgumentName>Objective Value</ArgumentName>
+  </Output>
+  <Output>
+    <Argument>Gradient</Argument>
+    <ArgumentName>Objective Gradient</ArgumentName>
+  </Output>
+</Operation>
