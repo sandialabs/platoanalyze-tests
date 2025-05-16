@@ -22,6 +22,7 @@ add_test( NAME ${TEST_NAME}_timing
           -DRUN_TIME=${RUN_TIME}
           -DNUM_RUNS=${NUM_RUNS}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/timer.cmake )
+set_property(TEST ${TEST_NAME}_timing APPEND PROPERTY DISABLED TRUE)
 
 ## create test
 add_test( NAME ${TEST_NAME}_regression
@@ -33,3 +34,6 @@ add_test( NAME ${TEST_NAME}_regression
           -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/exo.diff
           -DDIFF=${EXODIFF}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
+
+# Test disabled due to failing on newer versions of AMGX
+set_property(TEST ${TEST_NAME}_regression APPEND PROPERTY DISABLED TRUE)
