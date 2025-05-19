@@ -34,6 +34,4 @@ if (PLATOANALYZE_ENABLE_ENGINEMESH)
             -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/exo.diff
             -DDIFF=${EXODIFF}
             -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
-# This runs out of memory on the gpu pipeline, so only run on cpu
-  set_property(TEST ${TEST_NAME}_regression PROPERTY LABELS "CPU_only")
 endif()
