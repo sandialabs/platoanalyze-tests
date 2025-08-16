@@ -63,8 +63,6 @@ ADD_SUBDIRECTORY(AD_TransientTM)
 ADD_SUBDIRECTORY(AD_HeatEquation)
 endif()
 
-ADD_SUBDIRECTORY(PE_Integration)
-
 if(STABILIZED)
 ADD_SUBDIRECTORY(AD_StabElastic)
 endif()
