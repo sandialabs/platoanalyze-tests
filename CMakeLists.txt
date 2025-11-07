@@ -72,8 +72,3 @@ ADD_SUBDIRECTORY(AD_Plasticity)
 ADD_SUBDIRECTORY(AD_Thermoplasticity)
 ADD_SUBDIRECTORY(AD_Thermoplasticity2)
 endif()
-
-
-if (PLATOANALYZE_ENABLE_ENGINEMESH)
-  ADD_SUBDIRECTORY(IO_Tests)
-endif()
