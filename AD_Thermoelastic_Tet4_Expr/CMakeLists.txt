@@ -23,6 +23,8 @@ add_test( NAME ${TEST_NAME}_timing
           -DNUM_RUNS=${NUM_RUNS}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/timer.cmake )
 
+set_openmp_test_properties(${TEST_NAME}_timing)
+
 
 if (PLATOANALYZE_ENABLE_ENGINEMESH)
   ## create test
@@ -47,3 +49,5 @@ else()
             -DDIFF=${VTKDIFF}
             -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
 endif()
+
+set_openmp_test_properties(${TEST_NAME}_regression)
