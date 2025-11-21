@@ -62,7 +62,3 @@ if(PARABOLIC)
 ADD_SUBDIRECTORY(AD_TransientTM)
 ADD_SUBDIRECTORY(AD_HeatEquation)
 endif()
-
-if(STABILIZED)
-ADD_SUBDIRECTORY(AD_StabElastic)
-endif()
