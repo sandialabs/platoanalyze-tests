@@ -23,6 +23,8 @@ add_test( NAME ${TEST_NAME}_timing
           -DNUM_RUNS=${NUM_RUNS}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/timer.cmake )
 
+set_openmp_test_properties(${TEST_NAME}_timing)
+
 
 ## create test
 add_test( NAME ${TEST_NAME}_regression
@@ -34,3 +36,5 @@ add_test( NAME ${TEST_NAME}_regression
           -DDIFF_CONF=${CMAKE_CURRENT_SOURCE_DIR}/exo.diff
           -DDIFF=${EXODIFF}
           -P ${CMAKE_SOURCE_DIR}/tests/tools/compare.cmake )
+
+set_openmp_test_properties(${TEST_NAME}_regression)
